@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-//admin_dashboard
+// admin_dashboard
 Route::get('/admin/dashboard', function () {
     return view('backend.admin_dashboard');
 })->middleware(['auth:admin', 'verified'])->name('admin_dashboard');
@@ -47,5 +47,21 @@ Route::middleware('auth:admin')->prefix('admin')->group( function () {
     Route::post('logout', [App\Http\Controllers\Auth\Admin\LoginController::class, 'logout'])->name('admin.logout');
 
     Route::view('/admin/dashboard','backend.admin_dashboard');
+
+});
+
+// Attendee login route
+
+Route::middleware('guest:attendee')->prefix('attendee')->group( function () {
+
+    Route::get('login', [App\Http\Controllers\Auth\Attendee\LoginController::class, 'login'])->name('attendee.login');
+    Route::post('login', [App\Http\Controllers\Auth\Attendee\LoginController::class, 'check_user']);
+});
+
+Route::middleware('auth:attendee')->prefix('attendee')->group( function () {
+
+    Route::post('logout', [App\Http\Controllers\Auth\Attendee\LoginController::class, 'logout'])->name('attendee.logout');
+
+    Route::view('/dashboard','backend.attendee_dashboard');
 
 });

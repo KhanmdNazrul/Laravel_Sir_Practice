@@ -20,9 +20,15 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        \App\Models\Admin::create([
-            'name' => 'Test User',
-            'email' => 'nazrul@gmail.com',
+        // \App\Models\Admin::create([
+        //     'name' => 'Test User',
+        //     'email' => 'nazrul@gmail.com',
+        //     'password'=> Hash::Make('admin123'),
+        // ]);
+
+        \App\Models\Attendee::create([
+            'name' => 'Abdullah',
+            'email' => 'abdullah@gmail.com',
             'password'=> Hash::Make('admin123'),
         ]);
     }

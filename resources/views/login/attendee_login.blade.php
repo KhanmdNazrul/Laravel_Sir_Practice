@@ -39,7 +39,7 @@
 								<div class="panel panel-default card-view mb-0">
 									<div class="panel-heading">
 										<div class="pull-left">
-											<h6 class="panel-title txt-dark">Sign In</h6>
+											<h6 class="panel-title txt-dark">Attendee Sign In</h6>
 
 											@if ($errors->has('email'))
 											<div class="alert alert-danger">{{$errors->first('email')}}</div>
@@ -55,7 +55,7 @@
 													<div class="form-wrap">
 
 
-														<form action="{{route('admin.login')}}" method="post">
+														<form action="{{route('attendee.login')}}" method="post">
                                                             @csrf
 															<div class="form-group">
 																<label class="control-label mb-10" for="exampleInputEmail_2">Email address</label>

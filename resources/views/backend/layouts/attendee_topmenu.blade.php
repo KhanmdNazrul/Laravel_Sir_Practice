@@ -67,7 +67,7 @@
 											<img class="img-responsive img-circle" src="{{asset('dist/img/user.png')}}" alt="avatar"/>
 										</div>
 										<div class="sl-content">
-											<a href="javascript:void(0)" class="inline-block capitalize-font  pull-left">Sandy Doe</a>
+											<a href="javascript:void(0)" class="inline-block capitalize-font  pull-left">Doctor</a>
 											<span class="inline-block font-12  pull-right">12/10/16</span>
 											<div class="clearfix"></div>
 											<p>Neque porro quisquam est!</p>
@@ -144,14 +144,14 @@
 							<li class="divider"></li>
 							<li>
 								
-							<form method="POST" action="{{ route('admin.logout') }}">
+							<form method="POST" action="{{ route('attendee.logout') }}">
                                     @csrf
                                     <a
-                                        href="{{ route('admin.logout') }}"
+                                        href="{{ route('attendee.logout') }}"
                                         onclick="event.preventDefault();
                                         this.closest('form').submit();"
                                     ><i class="fa fa-fw fa-power-off"></i>
-                                        Log Out
+                                        Attendee Log Out
                                     </a>
                                 </form>
 
