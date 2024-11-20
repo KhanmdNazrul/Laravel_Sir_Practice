@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\backend\SpecialistController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -47,6 +48,8 @@ Route::middleware('auth:admin')->prefix('admin')->group( function () {
     Route::post('logout', [App\Http\Controllers\Auth\Admin\LoginController::class, 'logout'])->name('admin.logout');
 
     Route::view('/admin/dashboard','backend.admin_dashboard');
+    //specialist crud
+    Route::resource('/specialist',SpecialistController::class);
 
 });
 
@@ -65,3 +68,6 @@ Route::middleware('auth:attendee')->prefix('attendee')->group( function () {
     Route::view('/dashboard','backend.attendee_dashboard');
 
 });
+
+
+
