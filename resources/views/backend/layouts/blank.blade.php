@@ -58,14 +58,14 @@
 				<!-- Title -->
 				<div class="row heading-bg bg-green">
 					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-					  <h5 class="txt-light">Create Form</h5>
+					  <h5 class="txt-light">Export</h5>
 					</div>
 					<!-- Breadcrumb -->
 					<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
 					  <ol class="breadcrumb">
 						<li><a href="index.html">Dashboard</a></li>
-						<li><a href="#"><span>Specialists</span></a></li>
-						<li class="active"><span>create New</span></li>
+						<li><a href="#"><span>table</span></a></li>
+						<li class="active"><span>Export</span></li>
 					  </ol>
 					</div>
 					<!-- /Breadcrumb -->
@@ -73,59 +73,7 @@
 				<!-- /Title -->
 				
 				<!-- Row -->
-				<div class="row">
-						
-						
-						<div class="col-md-8 col-md-offset-2">
-							<div class="panel panel-default card-view">
-								<div class="panel-heading">
-									<div class="pull-left">
-										<h6 class="panel-title txt-dark">New specialist creation Form</h6>
-									</div>
-									<div class="clearfix"></div>
-								</div>
-								<div class="panel-wrapper collapse in">
-									<div class="panel-body">
-										<div class="row">
-											<div class="col-sm-12 col-xs-12">
-												<div class="form-wrap">
-													<form class="form-horizontal" action="{{route('specialist.store')}}" method="post">
-                                                        @csrf
-														<div class="form-group">
-															<label for="exampleInputuname_4" class="col-sm-3 control-label">Specialist*</label>
-															<div class="col-sm-9">
-																<div class="input-group">
-																	<input type="text" class="form-control" name="specialist" id="exampleInputuname_4" placeholder="Username">
-																	<div class="input-group-addon"><i class="icon-user"></i></div>
-																</div>
-															</div>
-														</div>
-
-														<div class="form-group">
-															<label for="exampleInputEmail_4" class="col-sm-3 control-label">Details*</label>
-															<div class="col-sm-9">
-																<div class="input-group">
-																	<textarea type="text" name="details" class="form-control"  placeholder="Description" rows="10"></textarea>
-																	<div class="input-group-addon"><i class="icon-envelope-open" ></i></div>
-																</div>
-															</div>
-														</div>
-														
-																				
-														<div class="form-group mb-0">
-															<div class="col-sm-offset-3 col-sm-9">
-																<button type="submit" class="btn btn-info ">Save</button>
-															</div>
-														</div>
-													</form>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>	
-						</div>
-					</div>
+				
 				<!-- /Row -->
 			</div>
 

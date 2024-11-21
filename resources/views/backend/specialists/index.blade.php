@@ -78,6 +78,11 @@
 						<div class="panel panel-default card-view">
 							<div class="panel-heading">
 								<div class="pull-left">
+
+								@if (session('msg'))
+								<div class="alert alert-success">{{session('msg')}}</div>
+								@endif
+
 									<h6 class="panel-title txt-dark">Export</h6>
 								</div>
 								<div class="clearfix"></div>
@@ -101,7 +106,7 @@
                                                     <th>SN</th>
 														<th>Speciality</th>
 														<th>Details</th>
-														<th>Action</th>
+														<th style="width:230px">Action</th>
 														
 													</tr>
 												</tfoot>
@@ -113,7 +118,17 @@
 														<td>{{$loop->iteration}}</td>                                            
 														<td>{{$item->name}}</td>
 														<td>{{$item->details}}</td>
-														<td>Edit | Delete</td>
+														<td>
+
+															<form action="{{route('specialist.destroy',$item->id)}}" method="post">
+																@csrf
+																@method('DELETE')
+																<a href="{{route('specialist.edit',$item->id)}}" class="btn btn-success">Edit</a>
+																<a href="{{route('specialist.destroy',$item->id)}}" class="btn btn-danger">Delete</a>
+											
+															</form>
+
+														</td>
 														
 													</tr>	
                                                     @endforeach												

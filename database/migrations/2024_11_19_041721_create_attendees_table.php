@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('attendees', function (Blueprint $table) {
             $table->id();
+            $table->integer('specialists_id');
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
             $table->rememberToken();
-            $table->string('photo');
-            $table->enum('status',['active','inactive']);
+            $table->string('photo')->nullable();
+            $table->enum('status',['active','inactive'])->default('inactive');
             $table->timestamps();
         });
     }

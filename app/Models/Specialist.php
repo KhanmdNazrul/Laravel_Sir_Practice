@@ -11,4 +11,8 @@ class Specialist extends Model
     protected $fillable= [
         'name', 'details'
     ];
+
+    public function attendee(){
+        return $this->hasMany(Attendee::class);
+    }
 }

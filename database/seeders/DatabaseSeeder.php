@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
 
         // \App\Models\Admin::create([
         //     'name' => 'Test User',
-        //     'email' => 'nazrul@gmail.com',
+        //     'email' => 'admin@gmail.com',
         //     'password'=> Hash::Make('admin123'),
         // ]);
 
@@ -32,9 +32,10 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Abdullah',
         //     'email' => 'abdullah@gmail.com',
         //     'password'=> Hash::Make('admin123'),
+        //   'specialists_id'=>'1'
         // ]);
 
-        \App\Models\Specialist::factory(20)->create();
+        // \App\Models\Specialist::factory(20)->create();
         
     }
 }

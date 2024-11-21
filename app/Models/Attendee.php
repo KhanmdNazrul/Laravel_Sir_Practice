@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -23,6 +24,7 @@ class Attendee extends Authenticatable
         'name',
         'email',
         'password',
+        'specialists_id'
     ];
 
     /**
@@ -43,4 +45,8 @@ class Attendee extends Authenticatable
     protected $casts = [
         'password' => 'hashed',
     ];
+
+    public function specialist(){
+        return $this->belongsTo(Specialist::class);
+    }
 }

@@ -23,7 +23,7 @@ class SpecialistController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.specialists.create');
     }
 
     /**
@@ -31,9 +31,15 @@ class SpecialistController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+       $specialist =  new Specialist;
 
+       $specialist->name = $request->specialist;
+       $specialist->details = $request->details;
+
+    $specialist->save();
+
+      return redirect()->route('specialist.index')->with('msg', 'Created Successfully');
+    }
     /**
      * Display the specified resource.
      */
@@ -47,7 +53,8 @@ class SpecialistController extends Controller
      */
     public function edit(Specialist $specialist)
     {
-        //
+      
+        return view('backend.specialists.edit',compact('specialist'));
     }
 
     /**
@@ -55,7 +62,11 @@ class SpecialistController extends Controller
      */
     public function update(Request $request, Specialist $specialist)
     {
-        //
+        $specialist->name = $request->specialist;
+        $specialist->details = $request->details;
+        $specialist->update();
+        return redirect()->route('specialist.index')->with('msg', 'Updated Successfully');
+        
     }
 
     /**
@@ -63,6 +74,7 @@ class SpecialistController extends Controller
      */
     public function destroy(Specialist $specialist)
     {
-        //
+       $specialist->delete();
+       return redirect()->route('specialist.index')->with('msg', 'Deleted Successfully');
     }
 }
