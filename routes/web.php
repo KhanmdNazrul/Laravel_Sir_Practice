@@ -66,7 +66,6 @@ Route::middleware('auth:attendee')->prefix('attendee')->group( function () {
     Route::post('logout', [App\Http\Controllers\Auth\Attendee\LoginController::class, 'logout'])->name('attendee.logout');
 
     Route::view('/dashboard','backend.attendee_dashboard');
-
 });
 
 
