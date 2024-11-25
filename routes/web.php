@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\backend\AttendeeController;
 use App\Http\Controllers\backend\SpecialistController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -50,6 +51,7 @@ Route::middleware('auth:admin')->prefix('admin')->group( function () {
     Route::view('/admin/dashboard','backend.admin_dashboard');
     //specialist crud
     Route::resource('/specialist',SpecialistController::class);
+    Route::resource('/attendee',AttendeeController::class);
 
 });
 

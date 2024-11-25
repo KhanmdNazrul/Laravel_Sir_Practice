@@ -21,10 +21,10 @@
 						<a href="javascript:void(0);" data-toggle="collapse" data-target="#app_dr"><i class="icon-grid mr-10"></i>Attendee <span class="pull-right"><span class="label label-info mr-10">9</span><i class="fa fa-fw fa-angle-down"></i></span></a>
 						<ul id="app_dr" class="collapse collapse-level-1">
 							<li>
-								<a href="chats.html">Attendees</a>
+								<a href="{{route('attendee.index')}}">Attendees</a>
 							</li>
 							<li>
-								<a href="calendar.html">Create New</a>
+								<a href="{{route('attendee.create')}}">Create New</a>
 							</li>
 							
 							

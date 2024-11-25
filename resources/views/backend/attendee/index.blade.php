@@ -95,8 +95,8 @@
 									<thead>
 										<tr>
 											<th>SN</th>
-											<th>Speciality</th>
-											<th>Details</th>
+											<th>Name</th>
+											<th>Specialist</th>
 											<th>Action</th>
 
 										</tr>
@@ -104,8 +104,8 @@
 									<tfoot>
 										<tr>
 											<th>SN</th>
-											<th>Speciality</th>
-											<th>Details</th>
+											<th>Name</th>
+											<th>Specialist</th>
 											<th style="width:280px">Action</th>
 
 										</tr>
@@ -117,7 +117,7 @@
 										<tr>
 											<td>{{$loop->iteration}}</td>
 											<td>{{$item->name}}</td>
-											<td>{{$item->details}}</td>
+											<td>{{$item->specialist->name}}</td>
 											<td>
 
 												<form action="{{route('specialist.destroy',$item->id)}}" method="post">

@@ -45,7 +45,7 @@ class SpecialistController extends Controller
      */
     public function show(Specialist $specialist)
     {
-        //
+        return view('backend.specialists.show',compact('specialist'));
     }
 
     /**
