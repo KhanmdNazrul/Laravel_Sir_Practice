@@ -120,13 +120,13 @@
 											<td>{{$item->specialist->name}}</td>
 											<td>
 
-												<form action="{{route('specialist.destroy',$item->id)}}" method="post">
+												<form onsubmit="return confirm('are you sure?')" action="{{route('attendee.destroy',$item->id)}}" method="post">
 													@csrf
 													@method('DELETE')
-													<a href="{{route('specialist.show',$item->id)}}" class="btn btn-info">Show</a>
-													<a href="{{route('specialist.edit',$item->id)}}" class="btn btn-success">Edit</a>
+													<a href="{{route('attendee.show',$item->id)}}" class="btn btn-info">Show</a>
+													<a href="{{route('attendee.edit',$item->id)}}" class="btn btn-success">Edit</a>
 
-													<button class="btn btn-danger" type="submit" name="submit">Delete</button>
+													<button class="btn btn-danger"  type="submit" name="submit">Delete</button>
 												</form>
 
 											</td>

@@ -64,8 +64,8 @@
 					<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
 					  <ol class="breadcrumb">
 						<li><a href="index.html">Dashboard</a></li>
-						<li><a href="#"><span>Specialists</span></a></li>
-						<li class="active"><span>create New</span></li>
+						<li><a href="#"><span>Attendee</span></a></li>
+						<li class="active"><span>Edit Form</span></li>
 					  </ol>
 					</div>
 					<!-- /Breadcrumb -->
@@ -74,59 +74,117 @@
 				
 				<!-- Row -->
 				<div class="row">
-						
-						
-						<div class="col-md-8 col-md-offset-2">
-							<div class="panel panel-default card-view">
-								<div class="panel-heading">
-									<div class="pull-left">
-										<h6 class="panel-title txt-dark">Edit specialist Form</h6>
-									</div>
-									<div class="clearfix"></div>
-								</div>
-								<div class="panel-wrapper collapse in">
-									<div class="panel-body">
-										<div class="row">
-											<div class="col-sm-12 col-xs-12">
-												<div class="form-wrap">
-													<form class="form-horizontal" action="{{route('specialist.update',$specialist->id)}}" method="post">
-                                                        @csrf
-                                                        @method('PUT')
-														<div class="form-group">
-															<label for="exampleInputuname_4" class="col-sm-3 control-label">Specialist*</label>
-															<div class="col-sm-9">
-																<div class="input-group">
-																	<input type="text" class="form-control" value="{{$specialist->name}}" name="specialist" id="exampleInputuname_4" placeholder="Username">
-																	<div class="input-group-addon"><i class="icon-user"></i></div>
-																</div>
-															</div>
-														</div>
 
-														<div class="form-group">
-															<label for="exampleInputEmail_4" class="col-sm-3 control-label">Details*</label>
-															<div class="col-sm-9">
-																<div class="input-group">
-																	<textarea type="text" name="details" class="form-control" placeholder="Description" rows="10">{{$specialist->details}}</textarea>
-																	<div class="input-group-addon"><i class="icon-envelope-open" ></i></div>
-																</div>
-															</div>
-														</div>
-														
-																				
-														<div class="form-group mb-0">
-															<div class="col-sm-offset-3 col-sm-9">
-																<button type="submit" class="btn btn-info ">Update</button>
-															</div>
-														</div>
-													</form>
+
+		<div class="col-md-8 col-md-offset-2">
+			<div class="panel panel-default card-view">
+				<div class="panel-heading">
+					<div class="pull-left">
+						<h6 class="panel-title txt-dark"> Attendee Updation Form</h6>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="panel-wrapper collapse in">
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-sm-12 col-xs-12">
+								<div class="form-wrap">
+									<form class="form-horizontal" action="{{route('attendee.update', $attendee->id)}}" method="post" enctype="multipart/form-data">
+										@csrf
+										@method('PUT')
+										<div class="form-group">
+											<label for="exampleInputuname_4" class="col-sm-3 control-label">Doctor Name*</label>
+											<div class="col-sm-9">
+												<div class="input-group">
+													<input type="text" class="form-control" name="name" value="{{old('name')??$attendee->name}}" id="exampleInputuname_4" placeholder="Username">
+
+													<div class="input-group-addon"><i class="icon-user"></i></div>
+
 												</div>
+												@error('name')
+												<div class="alert alert-danger">{{$message}}</div>
+												@enderror
 											</div>
 										</div>
-									</div>
+
+										<div class="form-group">
+											<label for="exampleInputuname_4" class="col-sm-3 control-label">Specialist</label>
+											<div class="col-sm-9">
+
+												<select name="specialist" id="" class="form-control">
+													<option value="">Select One</option>
+													@foreach ($specialists as $specialist)
+													<option value="{{$specialist->id}}" @selected(old('specialist')??$attendee->specialist_id==$specialist->id)>{{$specialist->name}}</option>
+													@endforeach
+												</select>
+												@error('specialist')
+												<div class="alert alert-danger">{{$message}}</div>
+												@enderror
+
+											</div>
+										</div>
+
+										<div class="form-group">
+											<label for="exampleInputuname_4" class="col-sm-3 control-label">Email*</label>
+											<div class="col-sm-9">
+												<div class="input-group">
+													<input type="email" class="form-control" value="{{old('email')??$attendee->email}}" name="email" id="exampleInputuname_4" placeholder="enter email address">
+
+													<div class="input-group-addon"><i class="icon-user"></i></div>
+
+												</div>
+												@error('email')
+												<div class="alert alert-danger">{{$message}}</div>
+												@enderror
+											</div>
+										</div>
+						
+										<div class="form-group">
+											<label for="exampleInputuname_4" class="col-sm-3 control-label">Photo*</label>
+											<div class="col-sm-9">
+												<div class="input-group">
+													<input type="file" class="form-control" name="photo" id="exampleInputuname_4" placeholder="Photo">
+													<div class="input-group-addon"></div>
+												</div>
+												@error('photo')
+												<div class="alert alert-danger">{{$message}}</div>
+												@enderror
+											</div>
+										</div>
+
+										<div class="form-group">
+											<label class="col-sm-3 control-label">Status</label>
+
+											<input id="radio1" type="radio" name="status" value="active"
+											 @if (old('status')=='active') checked
+											@elseif($attendee->status=='active') checked										
+											@endif>
+											<label for="radio1">
+												Active
+											</label>
+											<input id="radio2" type="radio" name="status" value="inactive" 
+											@if (old('status')=='inactive')checked
+											@elseif($attendee->status=='inactive')checked
+											@endif>
+											<label for="radio2">
+												inactive
+											</label>
+										</div>
+
+										<div class="form-group mb-0">
+											<div class="col-sm-offset-3 col-sm-9">
+												<button type="submit" class="btn btn-info ">Update</button>
+											</div>
+										</div>
+									</form>
 								</div>
-							</div>	
+							</div>
 						</div>
 					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 				<!-- /Row -->
 			</div>
 

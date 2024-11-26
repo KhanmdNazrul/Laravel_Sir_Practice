@@ -38,13 +38,21 @@ class AttendeeController extends Controller
         $request->validate([
             'name'=> 'required',
             'specialist'=> 'required',
-            'email'=> 'required',
+            'email'=> 'required|email',
             'password'=> 'required | confirmed | min:8',
-            'photo'=> 'max:2048',
+            'photo'=> 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'status'=> 'required',
             
         ]);
 
+        if ($image = $request->file('photo')) {
+            $destinationPath = 'images/';
+            $postImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $postImage);
+            $photo = $destinationPath.$postImage;
+        }else{
+            $photo= 'images/nophoto.jpg';
+        }
 
         $doctor =  new Attendee;
 
@@ -52,7 +60,7 @@ class AttendeeController extends Controller
         $doctor->specialist_id= $request->specialist;
         $doctor->email = $request->email;
         $doctor->password = bcrypt( $request->password);
-        $doctor->photo = $request->photo;
+        $doctor->photo = $photo;
         $doctor->status = $request->status;
         $doctor->save();
  
@@ -62,32 +70,59 @@ class AttendeeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Attendee $attendee)
     {
-        //
+        return view('backend.attendee.show', compact('attendee'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Attendee $attendee)
     {
-        //
+        $specialists= Specialist::all();
+       return view('backend.attendee.edit', compact('attendee', 'specialists'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Attendee $attendee)
     {
-        //
+        $request->validate([
+            'name'=> 'required',
+            'specialist'=> 'required',
+            'email'=> 'required|email',
+            'photo'=> 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'status'=> 'required',
+            
+        ]);
+        if ($image = $request->file('photo')) {
+            $destinationPath = 'images/';
+            $postImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $postImage);
+            $photo = $destinationPath.$postImage;
+        }else{
+            $photo =$attendee->photo;
+        }
+        $attendee->name = $request->name;
+        $attendee->specialist_id= $request->specialist;
+        $attendee->email = $request->email;
+        $attendee->photo = $photo;
+        $attendee->status = $request->status;
+        $attendee->update();
+ 
+       return redirect()->route('attendee.index')->with('msg', 'Updated Successfully');
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Attendee $attendee)
     {
-        //
+        // $attendee = Attendee::find($id);
+        $attendee->delete();
+        return redirect()->route('attendee.index')->with('msg', 'Deleted Successfully');
     }
 }
