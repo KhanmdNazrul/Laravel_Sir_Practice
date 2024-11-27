@@ -24,7 +24,7 @@ class Attendee extends Authenticatable
         'name',
         'email',
         'password',
-        'specialists_id'
+        'specialist_id'
     ];
 
     /**
