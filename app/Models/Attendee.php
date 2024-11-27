@@ -49,4 +49,8 @@ class Attendee extends Authenticatable
     public function specialist(){
         return $this->belongsTo(Specialist::class);
     }
+
+    public function appointment(){
+        return $this->hasMany(Appointment::class);
+    }
 }
