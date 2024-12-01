@@ -109,7 +109,7 @@
 											<th style="width:280px">Action</th>
 
 										</tr>
-									</tfoot>
+									</tfoot>s
 									<tbody>
 										@foreach ($items as $item)
 
