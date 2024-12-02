@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\backend\AppointmentController as BackendAppointmentController;
 use App\Http\Controllers\backend\AttendeeController;
+use App\Http\Controllers\backend\DepartMentController;
 use App\Http\Controllers\backend\SpecialistController;
 use App\Http\Controllers\frontend\AppointmentController;
 use App\Http\Controllers\frontend\HomeController;
@@ -67,7 +68,7 @@ Route::middleware('auth:admin')->prefix('admin')->group( function () {
     Route::resource('/attendee',AttendeeController::class);
     Route::resource('/appointment', BackendAppointmentController::class);
     Route::get('/appointment/status/{id}', [BackendAppointmentController::class, 'changeStatus'])->name('changeStatus');
-
+    Route::resource('/department',DepartMentController::class);
 
 });
 
