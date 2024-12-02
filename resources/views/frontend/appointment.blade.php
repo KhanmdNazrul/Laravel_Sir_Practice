@@ -58,8 +58,9 @@
                            </div>
 
                         </div>
+                        <button class="rr-btn-1 rr-form-theme-bg" type="submit"><span>Make an appoinment</span></button>
                      </form>
-                     <button class="rr-btn-1 rr-form-theme-bg" type="submit"><span>Make an appoinment</span></button>
+                    
                   </div>
                </div>
                <div class="col-xl-2 col-lg-10 col-md-1"></div>

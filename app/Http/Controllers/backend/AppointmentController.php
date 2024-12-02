@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\frontend;
+namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Appointment;
@@ -14,7 +14,8 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        //
+        $items = Appointment::orderBy('name')->get();
+        return view('backend.appointments.index', compact('items'));
     }
 
     /**
@@ -22,8 +23,8 @@ class AppointmentController extends Controller
      */
     public function create()
     {
-        $attendee = Attendee::all();
-        return view('frontend.appointment', compact('attendee'));
+        $Attendees = Attendee::orderBy('name')->get();
+        return view('backend.appointments.create', compact('Attendees'));
     }
 
     /**
@@ -48,9 +49,10 @@ class AppointmentController extends Controller
         $appointment->date=$request->date;
         $appointment->attendee_id=$request->attendee;
         $appointment->remarks=$request->remarks;
-        $appointment->save();
-        return redirect()->back()->with('msg', "Successfully appointment done");
 
+        $appointment->save();
+
+        return redirect()->route('appointment.index')->with('msg', "Successfully appointment done");
     }
 
     /**
@@ -83,5 +85,15 @@ class AppointmentController extends Controller
     public function destroy(Appointment $appointment)
     {
         //
+    }
+
+    public function changeStatus($id)
+    {
+        $record = Appointment::find($id);
+        $record->status == 'pending' ? $record->status = 'confirmed' : $record->status = 'pending' ;
+
+        $record->update();
+
+        return redirect()->back();
     }
 }

@@ -14,6 +14,7 @@ class Appointment extends Model
         'phone',
         'attendee_id',
         'date',
+        'remarks'
     ];
     public function attendee(){
         return $this->belongsTo(Attendee::class);

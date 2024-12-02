@@ -71,7 +71,7 @@
                                  </div>
                               </div>
                            </li>
-                           <li><a href="about.html">about us</a></li>
+                           <li><a href="{{route('about')}}">about us</a></li>
                            <li class="has-dropdown">
                               <a href="service.html">Service</a>
                               <ul class="submenu rr-submenu">
@@ -111,7 +111,7 @@
                         <button class="search-open-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
                      </div>
                      <div class="rr-header-btn d-none d-md-block">
-                        <a class="rr-btn rr-header-spc" href="contact.html"><span>Make Appointment <i
+                        <a class="rr-btn rr-header-spc" href="{{route('appointment.create')}}"><span>Make Appointment <i
                                  class="fa-sharp fa-solid fa-plus"></i></span></a>
                      </div>
                      <div class="rr-header-bar d-xl-none">
